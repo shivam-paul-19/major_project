@@ -256,7 +256,7 @@ const Form = ({getOutput, open, load}) => {
       
       open(true);
       load(true);
-      let response = await axios.post("http://localhost:5000/predict", processedData);
+      let response = await axios.post("http://localhost:5000/predict/health", processedData);
       console.log(response)
       getOutput(response.data)
     } else {
