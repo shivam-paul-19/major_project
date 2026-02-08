@@ -1,0 +1,3 @@
+/frontend/node_modules
+/backend/rough.py
+backend/__pycache__/
