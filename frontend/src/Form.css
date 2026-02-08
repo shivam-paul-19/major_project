@@ -1,0 +1,462 @@
+/* Form Container */
+.form-container {
+    min-height: 100vh;
+    background-color: #030712;
+    padding: 2rem 1rem;
+    font-family: "Dosis", sans-serif;
+}
+
+.form-header {
+    text-align: center;
+    color: #f3f4f6;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.form-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-header p {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+/* Main Form */
+.medical-form {
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Form Sections */
+.form-section {
+    background: #030712;
+    backdrop-filter: blur(10px);
+    /* border-radius: 20px; */
+    border: 1px solid #e60076;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-section h2 {
+    font-size: 1.75rem;
+    color: #f3f4f6;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #fccee8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.optional-section h2 {
+    border-bottom-color: #00d492;
+}
+
+.optional-section {
+    border: 1px #00d492 solid;
+}
+
+.optional-badge {
+    font-size: 0.75rem;
+    background-color: #00d492;
+    color: black;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+/* Form Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.radio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Form Fields */
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-field label {
+    font-weight: 700;
+    color: #f3f4f6;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Field Label with Badge */
+.field-label-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-badge {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    height: auto;
+    background: transparent;
+    border-color: #fda5d5;
+    color: #fda5d5;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.info-badge:hover {
+    background-color: #fda5d5;
+    color: #030712;
+    border-color: #fb64b6;
+    transform: scale(1.05);
+}
+
+.form-field input,
+.form-field select {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #ffffff;
+    color: #2d3748;
+    font-family: inherit;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+    outline: none;
+    background-color: #fda5d5;
+    color: #000;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-field input:disabled {
+    background: #f7fafc;
+    color: #a0aec0;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.form-field input::placeholder {
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+.form-field select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+/* Radio Buttons */
+.radio-field label:first-child {
+    margin-bottom: 0.5rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+    padding: 0;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.radio-label:hover {
+    color: white;
+}
+
+.radio-label input[type="radio"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.radio-label span {
+    font-weight: 500;
+}
+
+/* Error Messages */
+.error {
+    color: #e53e3e;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    animation: shake 0.3s ease;
+}
+
+.error::before {
+    content: "⚠";
+    font-size: 1rem;
+}
+
+/* Form Actions */
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.submit-btn {
+    color: white;
+    padding: 1.25rem 4rem;
+    border: 2px solid white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background-color: #fb64b6;
+    color: black;
+    border: none;
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* drawer */
+.drawer-content {
+    min-height: 0;
+}
+
+.output-icons {
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.output-box {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.output-box-inner {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+}
+
+.output-content h2 {
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.output-content {
+    font-family: "Dosis", sans-serif;
+}
+
+.output-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.spinner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 1rem 0.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 2rem;
+    }
+
+    .form-header p {
+        font-size: 1rem;
+    }
+
+    .form-section {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .form-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .submit-btn {
+        padding: 1rem 3rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+
+    .radio-group {
+        gap: 1rem;
+    }
+
+    /* Drawer Responsive Styles */
+    .output-box {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+    }
+
+    .output-box-inner {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    .output-icons {
+        height: 50px;
+    }
+
+    .output-content h2 {
+        font-size: 18px;
+    }
+
+    .output-content p {
+        font-size: 0.875rem;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-header h1 {
+        font-size: 1.75rem;
+    }
+
+    .form-section {
+        padding: 1.25rem;
+    }
+
+    .form-section h2 {
+        font-size: 1.25rem;
+    }
+
+    .optional-badge {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    /* Additional Drawer Responsive Styles for Small Screens */
+    .output-icons {
+        height: 45px;
+    }
+
+    .output-content h2 {
+        font-size: 16px;
+    }
+
+    .output-content p {
+        font-size: 0.8rem;
+        line-height: 1.3;
+    }
+
+    .output-box-inner {
+        padding: 0.75rem;
+    }
+
+    .spinner {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus visible for accessibility */
+*:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
