@@ -1,10 +1,8 @@
 from flask import Flask, request, jsonify
-import pickle
-import pandas as pd
 from flask_cors import CORS
-from abc import ABC, abstractmethod
 from health_assessment.utils import healthPredictor
 from disease_prediction.utils import DiseasePredictionOrchestrator
+from drug_recommendation.utils import RecommedationOrchestrator
 
 app = Flask(__name__)
 CORS(app)
@@ -14,7 +12,6 @@ def predict():
     if request.is_json:
         data = request.get_json()
         output = healthPredictor.run(data)
-        print(output)
         return jsonify({
             "heart": int(output["Heart"]),
             "sleep": int(output["Sleep"]),
@@ -32,6 +29,17 @@ def predictDisease():
         pred = disPred.run()
 
         return jsonify(pred), 200
+    else:
+        return jsonify("wrong data")
+
+@app.route("/recommend", methods=["POST"])
+def recommend():
+    if request.is_json:
+        data = request.get_json()
+        drug = data['drug']
+        recommendor = RecommedationOrchestrator(drug=drug)
+        output = recommendor.run()
+        return jsonify(output), 200
     else:
         return jsonify("wrong data")
 
