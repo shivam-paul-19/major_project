@@ -3,6 +3,7 @@ from flask_cors import CORS
 from health_assessment.utils import healthPredictor
 from disease_prediction.utils import DiseasePredictionOrchestrator
 from drug_recommendation.utils import RecommedationOrchestrator
+from chatbot.utils import answerGenerator
 
 app = Flask(__name__)
 CORS(app)
@@ -18,7 +19,7 @@ def predict():
             "metabolism": int(output["Metabolism"])
         }), 200
     else:
-        return jsonify("wrong Data")
+        return jsonify("wrong Data"), 400
 
 @app.route("/predict/disease", methods=["POST"])
 def predictDisease():
@@ -30,7 +31,7 @@ def predictDisease():
 
         return jsonify(pred), 200
     else:
-        return jsonify("wrong data")
+        return jsonify("wrong data"), 400
 
 @app.route("/recommend", methods=["POST"])
 def recommend():
@@ -41,7 +42,20 @@ def recommend():
         output = recommendor.run()
         return jsonify(output), 200
     else:
-        return jsonify("wrong data")
+        return jsonify("wrong data"), 400
+    
+@app.route("/answer", methods=["POST"])
+def answer():
+    if request.is_json:
+        data = request.get_json()
+        prompt = data['prompt']
+        response = answerGenerator(userPrompt=prompt)
+        output = {
+            "result": response
+        }
+        return jsonify(output), 200
+    else:
+        return jsonify("wrong data"), 400
 
 # routes to test the server only
 @app.route("/test", methods=["GET"])

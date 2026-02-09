@@ -6,3 +6,13 @@ lightgbm
 flask
 flask_cors
 imbalanced-learn
+streamlit
+python-dotenv
+nest_asyncio
+langchain
+langchain-groq
+langchain-community
+langchain-huggingface
+faiss-cpu
+sentence-transformers
+langchain-classic
