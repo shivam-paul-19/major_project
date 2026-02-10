@@ -87,7 +87,6 @@ class DiseasePredictionOrchestrator:
         sym_list = pre.extractAsList(self.symptomsStr)
         sym_list = pre.spellingCorrector(sym_list)
 
-        # 2️⃣ Check if no valid symptoms found
         if not sym_list:
             return {
                 "status": "error",
@@ -98,7 +97,6 @@ class DiseasePredictionOrchestrator:
         predictor = Predictor()
         pred = predictor.predict(sym_list)
 
-        # 3️⃣ Check prediction failure
         if pred in ["Unknown Disease", "Prediction Error"]:
             return {
                 "status": "error",
