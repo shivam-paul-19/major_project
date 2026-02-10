@@ -4,6 +4,7 @@ from health_assessment.utils import healthPredictor
 from disease_prediction.utils import DiseasePredictionOrchestrator
 from drug_recommendation.utils import RecommedationOrchestrator
 from chatbot.utils import answerGenerator
+from skin_disease_prediction.utils import SkinPredictor
 
 app = Flask(__name__)
 CORS(app)
@@ -56,6 +57,34 @@ def answer():
         return jsonify(output), 200
     else:
         return jsonify("wrong data"), 400
+
+@app.route("/skin", methods=["POST"])
+def predict_skin():
+    if "file" not in request.files:
+        return jsonify({
+            "status": "error",
+            "message": "No file provided",
+            "data": None
+        })
+
+    file = request.files["file"]
+
+    if file.filename == "":
+        return jsonify({
+            "status": "error",
+            "message": "Empty file name",
+            "data": None
+        })
+    
+    else:
+        predictor = SkinPredictor(file)
+        result = predictor.run()
+
+        return jsonify({
+            "status": "success",
+            "filename": file.filename,
+            "output": result
+        })
 
 # routes to test the server only
 @app.route("/test", methods=["GET"])
