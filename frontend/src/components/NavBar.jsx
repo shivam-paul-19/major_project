@@ -39,7 +39,9 @@ function NavBar() {
         <div
           className="tab"
           style={activeArray[1] ? activeStyle : {}}
-          onClick={() => setActiveArray([false, true, false, false, false])}
+          onClick={() => {setActiveArray([false, true, false, false, false])
+            navigate("/drug-finder");
+          }}
         >
           Drug finder
         </div>

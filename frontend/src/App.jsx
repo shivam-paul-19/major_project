@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import SymptomCheck from './SymptomCheck';
+import DrugFinder from './drugFinder';
 
 function App() {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ function App() {
         {
           path: "symptom-check",
           element: <SymptomCheck />,
+        },
+        {
+          path: "drug-finder",
+          element: <DrugFinder />,
         },
         {
           path: "skin-scan",
