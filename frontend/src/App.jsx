@@ -1,4 +1,3 @@
-import NavBar from './components/NavBar';
 import FormPage from './FormPage';
 import ImageForm from './imageform';
 import Layout from './components/Layout';
@@ -26,8 +25,9 @@ function App() {
         {
           path: "skin-scan",
           element: <ImageForm />,
-        }]
-      }
+        }
+      ]
+    }
   ]);
 
   return (

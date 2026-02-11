@@ -29,7 +29,6 @@ def predictDisease():
         symptoms = data['sym']
         disPred = DiseasePredictionOrchestrator(symptomsStr=symptoms)
         pred = disPred.run()
-
         return jsonify(pred), 200
     else:
         return jsonify("wrong data"), 400

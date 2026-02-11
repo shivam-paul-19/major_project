@@ -56,20 +56,35 @@ class InfoExtractor:
     def __init__(self, disease: str):
         self.disease = disease
     
-    def extractDesc(self) -> list:
-        return description.loc[description['Disease'] == self.disease, 'Description'].values[0]
+    def extractDesc(self) -> str:
+        val = description.loc[description['Disease'] == self.disease, 'Description'].values
+        # Return string if it exists and isn't NaN, else empty string
+        return str(val[0]) if len(val) > 0 and pd.notna(val[0]) else ""
     
     def extractPrecaution(self) -> list:
-        return precautions.loc[precautions['Disease'] == self.disease, ['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']].values.flatten().tolist()
+        # Get values as a list
+        raw_prec = precautions.loc[precautions['Disease'] == self.disease, 
+                                  ['Precaution_1', 'Precaution_2', 'Precaution_3', 'Precaution_4']].values.flatten().tolist()
+        # Filter out NaN values (and None/Empty if any)
+        return [p for p in raw_prec if pd.notna(p) and p != ""]
     
     def extractMed(self) -> list:
-        return ast.literal_eval(medications.loc[medications['Disease'] == self.disease, 'Medication'].values[0])
+        val = medications.loc[medications['Disease'] == self.disease, 'Medication'].values
+        if len(val) > 0 and pd.notna(val[0]):
+            # literal_eval results in a list; usually these don't have NaNs inside the string
+            return ast.literal_eval(val[0])
+        return []
 
     def extractDiet(self) -> list:
-        return ast.literal_eval(diets.loc[diets['Disease'] == self.disease, 'Diet'].values[0])
+        val = diets.loc[diets['Disease'] == self.disease, 'Diet'].values
+        if len(val) > 0 and pd.notna(val[0]):
+            return ast.literal_eval(val[0])
+        return []
 
     def extractWorkout(self) -> list:
-        return workout.loc[workout['disease'] == self.disease, 'workout'].values.tolist()
+        val = workout.loc[workout['disease'] == self.disease, 'workout'].values.tolist()
+        # Filter the list to remove NaNs
+        return [w for w in val if pd.notna(w)]
 
 class DiseasePredictionOrchestrator:
     def __init__(self, symptomsStr: str):
