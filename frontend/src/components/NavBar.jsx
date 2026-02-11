@@ -24,7 +24,9 @@ function NavBar() {
             style={
                 activeArray[0]? activeStyle : {}
             }
-            onClick={() => setActiveArray([true, false, false, false, false])}
+            onClick={() => {setActiveArray([true, false, false, false, false])
+                navigate("/symptom-check")
+            }}
             >Symptom Check</div>
             <div className="tab" style={
                 activeArray[1]? activeStyle : {}
@@ -37,7 +39,9 @@ function NavBar() {
             }}>Health insights</div>
             <div className="tab" style={
                 activeArray[3]? activeStyle : {}
-            } onClick={() => setActiveArray([false, false, false, true, false])}>Skin scan</div>
+            } onClick={() => {setActiveArray([false, false, false, true, false])
+                navigate("/skin-scan")
+            }}>Skin scan</div>
             <div className="tab" style={
                 activeArray[4]? activeStyle : {}
             } onClick={() => setActiveArray([false, false, false, false, true])}>Medibot</div>
