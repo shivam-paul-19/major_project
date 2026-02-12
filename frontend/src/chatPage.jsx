@@ -2,6 +2,7 @@ import ChatBubble from "./components/chatBubble";
 import "./chatPage.css";
 import { useState } from "react";
 import axios from "axios";
+import sendIcon from "./assets/send_icon.png";
 
 function ChatPage() {
     const handleSubmit = async (e) => {
@@ -36,9 +37,9 @@ function ChatPage() {
             }}>
 
             </div>
-            <form action="" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter your query" value={value} onChange={handleChange}/>
-                <button type="submit">Send</button>
+            <form action="" onSubmit={handleSubmit} className="medibot-prompt-area">
+                <input type="text" placeholder="Enter your query" className="chat-text-box" value={value} onChange={handleChange}/>
+                <button type="submit" className="chat-submit-btn"><img src={sendIcon} alt="" /></button>
             </form>
             <div style={{
                 height: "20px"

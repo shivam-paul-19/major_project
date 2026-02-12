@@ -12,7 +12,7 @@ function NavBar() {
     false,
   ]);
   const activeStyle = {
-    backgroundColor: "black",
+    backgroundColor: "#9F2B2B",
     width: "20%",
     height: "80%",
     display: "flex",

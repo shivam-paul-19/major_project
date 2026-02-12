@@ -5,7 +5,35 @@
 
 .chatpage {
     height: 100vh;
+    background-color: #EDFFFE;
     display: flex;
     align-items: center;
     flex-direction: column-reverse;
+}
+
+.chat-text-box {
+    padding: 10px;
+    border: 1px solid black;
+    width: 90%;
+    height: 50px;
+    margin: 2px;
+    border-radius: 50px;
+}
+
+.medibot-prompt-area {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+
+.chat-submit-btn {
+    background-color: #9F2B2B;
+    color: #EDFFFE;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
