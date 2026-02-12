@@ -35,7 +35,7 @@ class Prompt:
         {question}
 
         Please provide a **concise, elaborative and informative response**.
-        Elaborate the answer, add bullet points only wherever necesaary.
+        Elaborate the answer but also be to the point.
         The user has has very less or no medical knowledge, explain the answer accordingly.
         """,
         input_variables=["context", "question"]

@@ -1,0 +1,11 @@
+.chat-container {
+    width: 70%;
+    overflow-y: scroll;
+}
+
+.chatpage {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}

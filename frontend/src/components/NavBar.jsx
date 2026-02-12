@@ -68,7 +68,10 @@ function NavBar() {
         <div
           className="tab"
           style={activeArray[4] ? activeStyle : {}}
-          onClick={() => setActiveArray([false, false, false, false, true])}
+          onClick={() => {
+            setActiveArray([false, false, false, false, true])
+            navigate("/medibot");
+          }}
         >
           Medibot
         </div>
