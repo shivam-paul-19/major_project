@@ -267,7 +267,6 @@ const Form = ({getOutput, open, load}) => {
   return (
     <div className="form-container">
       <div className="form-header">
-        <h1>Medical Health Assessment</h1>
         <p>Please fill out all required fields to complete your health profile</p>
       </div>
 

@@ -81,6 +81,11 @@ function FormPage() {
 
   return (
     <>
+    <div style={{
+      height: "60px",
+      backgroundColor: "#edfffe"
+    }}>
+    </div>
     <Form getOutput={getOutput} open={setOpen} load={setLoading}/>
       <Drawer open={open} onOpenChange={setOpen} className="dr">
           <DrawerContent>

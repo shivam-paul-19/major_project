@@ -1,9 +1,8 @@
 /* Form Container */
 .form-container {
     min-height: 100vh;
-    background-color: #030712;
+    background-color: #edfffe;
     padding: 2rem 1rem;
-    font-family: "Dosis", sans-serif;
 }
 
 .form-header {
@@ -13,17 +12,11 @@
     animation: fadeInDown 0.6s ease-out;
 }
 
-.form-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
 .form-header p {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     opacity: 0.95;
-    font-weight: 300;
+    font-weight: 400;
+    color: #000;
 }
 
 /* Main Form */
@@ -35,23 +28,21 @@
 
 /* Form Sections */
 .form-section {
-    background: #030712;
     backdrop-filter: blur(10px);
-    /* border-radius: 20px; */
-    border: 1px solid #e60076;
+    border-radius: 20px;
+    border: 3px solid #9f2b2b;
     padding: 2.5rem;
     margin-bottom: 2rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-section h2 {
     font-size: 1.75rem;
-    color: #f3f4f6;
+    color: #125774;
     font-weight: 700;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 3px solid #fccee8;
+    border-bottom: 3px solid #ff5a58;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -62,7 +53,7 @@
 }
 
 .optional-section {
-    border: 1px #00d492 solid;
+    border: 3px #00d492 solid;
 }
 
 .optional-badge {
@@ -95,8 +86,8 @@
 
 .form-field label {
     font-weight: 700;
-    color: #f3f4f6;
-    font-size: 1rem;
+    color: #125774;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -113,18 +104,16 @@
     font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
     height: auto;
-    background: transparent;
-    border-color: #fda5d5;
-    color: #fda5d5;
+    background-color: #20ddce;
+    color: #125774;
     transition: all 0.2s ease;
     cursor: pointer;
     user-select: none;
 }
 
 .info-badge:hover {
-    background-color: #fda5d5;
-    color: #030712;
-    border-color: #fb64b6;
+    background-color: #125774;
+    color: white;
     transform: scale(1.05);
 }
 
@@ -134,6 +123,7 @@
     font-size: 1rem;
     transition: all 0.3s ease;
     background: #ffffff;
+    border: 1px solid black;
     color: #2d3748;
     font-family: inherit;
 }
@@ -141,8 +131,8 @@
 .form-field input:focus,
 .form-field select:focus {
     outline: none;
-    background-color: #fda5d5;
-    color: #000;
+    background-color: #125774;
+    color: white;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
     transform: translateY(-2px);
 }
@@ -190,15 +180,11 @@
     transition: color 0.2s ease;
 }
 
-.radio-label:hover {
-    color: white;
-}
-
 .radio-label input[type="radio"] {
     width: 1.25rem;
     height: 1.25rem;
     cursor: pointer;
-    accent-color: #667eea;
+    accent-color: #125774;
 }
 
 .radio-label span {
@@ -231,9 +217,10 @@
 }
 
 .submit-btn {
-    color: white;
+    color: black;
     padding: 1.25rem 4rem;
-    border: 2px solid white;
+    background-color: #20ddce;
+    border: 2px solid #125774;
     font-size: 1.125rem;
     font-weight: 600;
     cursor: pointer;
@@ -243,8 +230,8 @@
 }
 
 .submit-btn:hover {
-    background-color: #fb64b6;
-    color: black;
+    background-color: #125774;
+    color: white;
     border: none;
 }
 
@@ -279,10 +266,6 @@
 .output-content h2 {
     font-weight: 900;
     font-size: 25px;
-}
-
-.output-content {
-    font-family: "Dosis", sans-serif;
 }
 
 .output-content p {

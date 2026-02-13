@@ -1,6 +1,12 @@
 .chat-container {
     width: 70%;
     overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.chat-container::-webkit-scrollbar {
+    display: none;
 }
 
 .chatpage {
@@ -13,7 +19,7 @@
 
 .chat-text-box {
     padding: 10px;
-    border: 1px solid black;
+    border: 2px solid #9F2B2B;
     width: 90%;
     height: 50px;
     margin: 2px;
@@ -28,6 +34,17 @@
 }
 
 .chat-submit-btn {
+    background-color: #FF5A58;
+    color: #EDFFFE;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-submit-btn-disabled {
     background-color: #9F2B2B;
     color: #EDFFFE;
     border-radius: 50%;
