@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "./SymptomCheck.css";
 
 function SymptomCheck() {
   let [output, setOutput] = useState("");
@@ -14,66 +15,76 @@ function SymptomCheck() {
   };
 
   return (
-    <>
-      <div
-        style={{
-          height: "50px",
-        }}
-      >
-        {/* For spacing */}
+    <div className="symptom-container">
+      <div className="symptom-header">
+        <h1>Symptom Checker</h1>
+        <p>Describe your symptoms to get a potential assessment</p>
       </div>
-      <form action="" onSubmit={handleSubmit}>
-        <label htmlFor="symp">Write your symptoms</label>
-        <br />
-        <input
-          style={{
-            border: "1px solid black",
-            width: "500px",
-          }}
-          type="text"
-          name="symp"
-        />
-        <datalist>
-            
-        </datalist>
-        <br />
-        <button type="submit">Sumbit</button>
-      </form>
-      <div className="output">
-        {output == "" ? (
-          <div></div>
-        ) : (
-          <>
-            {output.disease} <br />
-            description: {output.desc} <br />
-            diet:{" "}
-            <ul>
-              {output.diet.map((d, idx) => {
-                return <li key={idx}> - {d}</li>;
-              })}
-            </ul>
-            precuation:{" "}
-            <ul>
-              {output.prec.map((d, idx) => {
-                return <li key={idx}> - {d}</li>;
-              })}
-            </ul>
-            medication:{" "}
-            <ul>
-              {output.med.map((d, idx) => {
-                return <li key={idx}> - {d}</li>;
-              })}
-            </ul>
-            workout:{" "}
-            <ul>
-              {output.workout.map((d, idx) => {
-                return <li key={idx}> - {d}</li>;
-              })}
-            </ul>
-          </>
-        )}
+
+      <div className="symptom-form-section">
+        <form className="symptom-form" onSubmit={handleSubmit}>
+          <label htmlFor="symp">Write your symptoms</label>
+          <input
+            className="symptom-input"
+            type="text"
+            name="symp"
+            id="symp"
+            placeholder="e.g. fever, cough, headache"
+          />
+          <button className="symptom-submit-btn" type="submit">Check Symptoms</button>
+        </form>
       </div>
-    </>
+
+      {output && (
+        <div className="symptom-output">
+          <h2>Potential Assessment: {output.disease}</h2>
+          
+          <div className="symptom-output-section">
+            <h3>Description</h3>
+            <p>{output.desc}</p>
+          </div>
+
+          <div className="symptom-output-section">
+            <h3>Recommended Diet</h3>
+            <ul>
+              {output.diet.map((d, idx) => (
+                <li key={idx}> {d}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="symptom-output-section">
+            <h3>Precautions</h3>
+            <ul>
+              {output.prec.map((d, idx) => (
+                <li key={idx}> {d}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="symptom-output-section">
+            <h3>Suggested Medication</h3>
+            <p style={{fontStyle: "italic", fontSize: "0.9rem", color: "#9f2b2b", marginBottom: "0.5rem"}}>
+              *Consult a doctor before taking any medication.
+            </p>
+            <ul>
+              {output.med.map((d, idx) => (
+                <li key={idx}> {d}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="symptom-output-section">
+            <h3>Workout Recommendations</h3>
+            <ul>
+              {output.workout.map((d, idx) => (
+                <li key={idx}> {d}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 

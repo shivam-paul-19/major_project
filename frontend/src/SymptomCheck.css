@@ -1,0 +1,144 @@
+.symptom-container {
+    min-height: 100vh;
+    background-color: #edfffe;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.symptom-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.symptom-header h1 {
+    color: #125774;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.symptom-header p {
+    color: #000;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.symptom-form-section {
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border: 3px solid #9f2b2b;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.symptom-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.symptom-form label {
+    font-weight: 700;
+    color: #125774;
+    font-size: 1.1rem;
+}
+
+.symptom-input {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid #125774;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.symptom-input:focus {
+    border-color: #20ddce;
+    box-shadow: 0 0 0 4px rgba(32, 221, 206, 0.1);
+}
+
+.symptom-submit-btn {
+    padding: 1rem 2rem;
+    background-color: #20ddce;
+    border: 2px solid #125774;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+}
+
+.symptom-submit-btn:hover {
+    background-color: #125774;
+    color: white;
+}
+
+.symptom-output {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    border: 3px solid #ff5a58;
+    border-radius: 20px;
+    padding: 2.5rem;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.symptom-output h2 {
+    color: #9f2b2b;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #ff5a58;
+    padding-bottom: 0.5rem;
+}
+
+.symptom-output-section {
+    margin-bottom: 1.5rem;
+}
+
+.symptom-output-section h3 {
+    color: #125774;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.symptom-output-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.symptom-output-section li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eeffff;
+    display: flex;
+    align-items: center;
+}
+
+.symptom-output-section li::before {
+    content: "•";
+    color: #20ddce;
+    font-weight: bold;
+    margin-right: 0.75rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .symptom-form-section, .symptom-output {
+        padding: 1.5rem;
+    }
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import updatedMedList from "./data/medList";
 import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions } from '@headlessui/react'
 import axios from "axios";
-
+import "./drugFinder.css";
 
 function DrugFinder() {
     const [query, setQuery] = useState('')
@@ -32,49 +32,68 @@ function DrugFinder() {
 
 
   return (
-    <>
-    <div style={{
-        height: "50px"
-    }}>
-        {/* For spacing */}
+    <div className="drug-container">
+      <div className="drug-header">
+        <h1>Drug Recommender</h1>
+        <p>Find information and alternatives for medications</p>
+      </div>
+
+      <div className="drug-search-section">
+        <label style={{color: "#125774", fontWeight: "700"}}>Search for a Drug</label>
+        <Combobox value={selectedPerson} onChange={setSelectedPerson} onClose={() => setQuery('')}>
+          <div className="relative w-full">
+            <ComboboxInput
+              className="drug-combobox-input"
+              aria-label="Drug name"
+              displayValue={(person) => person?.name}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Start typing drug name..."
+            />
+            <ComboboxOptions anchor="bottom start" className="drug-options">
+              {filteredPeople.map((person) => (
+                <ComboboxOption key={person.id} value={person} className="drug-option">
+                  {person.name}
+                </ComboboxOption>
+              ))}
+            </ComboboxOptions>
+          </div>
+        </Combobox>
+        <form onSubmit={handleSubmission}>
+          <button type="submit" className="drug-submit-btn">Find Drug Information</button>
+        </form>
+      </div>
+
+      {output && (
+        <div className="drug-output">
+          <h2>Drug Details: {selectedPerson.name}</h2>
+          
+          <div className="drug-output-section">
+            <h3>Description</h3>
+            <p className="drug-desc">{output.desc}</p>
+          </div>
+
+          <div className="drug-output-section">
+            <h3>Similar Drugs & Alternatives</h3>
+            <ul className="similar-drugs-list">
+              {output.similar.map((s_drug, idx) => (
+                <li key={idx} className="similar-drug-item">
+                  <span>{s_drug}</span>
+                  <a 
+                    href={`https://pharmeasy.in/search/all?name=${s_drug}`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="buy-link"
+                  >
+                    Buy
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
-    <div>drugFinder</div>
-    <Combobox value={selectedPerson} onChange={setSelectedPerson} onClose={() => setQuery('')}>
-      <ComboboxInput
-        aria-label="Assignee"
-        displayValue={(person) => person?.name}
-        onChange={(event) => setQuery(event.target.value)}
-      />
-      <ComboboxOptions anchor="bottom" className="border empty:invisible">
-        {filteredPeople.map((person) => (
-          <ComboboxOption key={person.id} value={person} className="data-focus:bg-blue-100">
-            {person.name}
-          </ComboboxOption>
-        ))}
-      </ComboboxOptions>
-    </Combobox>
-    <form action="" onSubmit={handleSubmission}>
-        <button type="submit">Find drug</button>
-    </form>
-    <div className="output">
-        {
-            output == ''? (
-                <div></div>
-            ) : (
-                <div>
-                    Description: {output.desc} <br />
-                    Similar drugs: 
-                    <ul>
-                        {output.similar.map((s_drug, idx) => {
-                            return <li key={idx}> - {s_drug} <i><u><a href={`https://pharmeasy.in/search/all?name=${s_drug}`} target="_blank">buy</a></u></i></li>;
-                        })}
-                    </ul>
-                </div>
-            )
-        }
-    </div>
-    </>
-  )
+  );
 }
 
 export default DrugFinder;

@@ -1,0 +1,129 @@
+.image-container {
+    min-height: 100vh;
+    background-color: #edfffe;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.image-header h1 {
+    color: #125774;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.image-header p {
+    color: #000;
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.image-upload-section {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border: 3px solid #9f2b2b;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.image-upload-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.image-label {
+    font-weight: 700;
+    color: #125774;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.file-input-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.image-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed #125774;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-input:hover {
+    border-color: #20ddce;
+    background-color: #f7ffff;
+}
+
+.image-submit-btn {
+    padding: 1rem 3rem;
+    background-color: #20ddce;
+    border: 2px solid #125774;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.image-submit-btn:hover {
+    background-color: #125774;
+    color: white;
+}
+
+.image-output {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border: 3px solid #ff5a58;
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.image-output h2 {
+    color: #9f2b2b;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.image-result {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #125774;
+    padding: 1rem;
+    background-color: #edfffe;
+    border-radius: 10px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
