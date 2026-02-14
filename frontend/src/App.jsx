@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router/dom";
 import SymptomCheck from './SymptomCheck';
 import DrugFinder from './drugFinder';
 import ChatPage from './chatPage';
+import Home from './Home';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,7 +15,7 @@ function App() {
       element: <Layout />,
       children: [{
           path: "/",
-          element: <div>root path</div>
+          element: <Home />
         },
         {
           path: "health-insights",

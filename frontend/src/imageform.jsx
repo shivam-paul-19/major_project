@@ -5,15 +5,33 @@ import "./imageform.css";
 function ImageForm() {
     let [selectedFile, setSelectedFile] = useState(null);
     let [output, setOutput] = useState("");
+    let [error, setError] = useState("");
 
     const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
+        const file = e.target.files[0];
+        if (file) {
+            const allowedExtensions = ["png", "jpg", "jpeg"];
+            const fileExtension = file.name.split(".").pop().toLowerCase();
+            
+            if (!allowedExtensions.includes(fileExtension)) {
+                setError("Only PNG, JPG, and JPEG files are acceptable.");
+                setSelectedFile(null);
+                e.target.value = ""; // Clear the input
+                return;
+            }
+            
+            setError("");
+            setSelectedFile(file);
+        }
     };
 
     const sendImage = async (e) => {
         e.preventDefault()
+        if (error) {
+            return;
+        }
         if (!selectedFile) {
-            alert("Please select an image first");
+            alert("Please select a valid image first");
             return;
         }
 
@@ -29,7 +47,11 @@ function ImageForm() {
     };
 
   return (
-    <div className="image-container">
+    <div className="image-container animate-in">
+      <div style={{
+        height: "60px",
+        backgroundColor: "#edfffe"
+      }}></div>
       <div className="image-header">
         <h1>Skin Disease Scanner</h1>
         <p>Upload a clear image of the affected area for AI analysis</p>
@@ -43,8 +65,10 @@ function ImageForm() {
             type="file" 
             name="image" 
             id="image" 
+            accept=".png,.jpg,.jpeg"
             onChange={handleFileChange}
           />
+          {error && <p className="validation-error">{error}</p>}
           <button className="image-submit-btn" type="submit">Scan Image</button>
         </form>
       </div>

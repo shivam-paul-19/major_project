@@ -15,7 +15,12 @@ function SymptomCheck() {
   };
 
   return (
-    <div className="symptom-container">
+    <>
+    <div className="symptom-container animate-in">
+      <div style={{
+        height: "60px",
+        backgroundColor: "#edfffe"
+      }}></div>
       <div className="symptom-header">
         <h1>Symptom Checker</h1>
         <p>Describe your symptoms to get a potential assessment</p>
@@ -37,54 +42,60 @@ function SymptomCheck() {
 
       {output && (
         <div className="symptom-output">
-          <h2>Potential Assessment: {output.disease}</h2>
-          
-          <div className="symptom-output-section">
-            <h3>Description</h3>
-            <p>{output.desc}</p>
-          </div>
+          <div className="symptom-output-grid">
+            <div className="symptom-card card-disease">
+              <h3>Potential Assessment</h3>
+              <p style={{fontSize: "2rem", fontWeight: "900"}}>{output.disease}</p>
+            </div>
+            
+            <div className="symptom-card card-desc">
+              <h3>Description</h3>
+              <p>{output.desc}</p>
+            </div>
 
-          <div className="symptom-output-section">
-            <h3>Recommended Diet</h3>
-            <ul>
-              {output.diet.map((d, idx) => (
-                <li key={idx}> {d}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="symptom-card card-diet">
+              <h3>Recommended Diet</h3>
+              <ul>
+                {output.diet.map((d, idx) => (
+                  <li key={idx}> {d}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="symptom-output-section">
-            <h3>Precautions</h3>
-            <ul>
-              {output.prec.map((d, idx) => (
-                <li key={idx}> {d}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="symptom-card card-prec">
+              <h3>Precautions</h3>
+              <ul>
+                {output.prec.map((d, idx) => (
+                  <li key={idx}> {d}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="symptom-output-section">
-            <h3>Suggested Medication</h3>
-            <p style={{fontStyle: "italic", fontSize: "0.9rem", color: "#9f2b2b", marginBottom: "0.5rem"}}>
-              *Consult a doctor before taking any medication.
-            </p>
-            <ul>
-              {output.med.map((d, idx) => (
-                <li key={idx}> {d}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="symptom-card card-med">
+              <h3>Suggested Medication</h3>
+              <span className="med-disclaimer">
+                *Consult a doctor before taking any medication.
+              </span>
+              <ul>
+                {output.med.map((d, idx) => (
+                  <li key={idx}> {d}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="symptom-output-section">
-            <h3>Workout Recommendations</h3>
-            <ul>
-              {output.workout.map((d, idx) => (
-                <li key={idx}> {d}</li>
-              ))}
-            </ul>
+            <div className="symptom-card card-workout">
+              <h3>Workout Recommendations</h3>
+              <ul>
+                {output.workout.map((d, idx) => (
+                  <li key={idx}> {d}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
     </div>
+    </>
   );
 }
 

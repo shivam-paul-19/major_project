@@ -31,7 +31,7 @@
     border: 3px solid #9f2b2b;
     border-radius: 20px;
     padding: 2.5rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 .symptom-form {
@@ -81,49 +81,113 @@
 .symptom-output {
     margin-top: 3rem;
     width: 100%;
-    max-width: 800px;
-    background: white;
-    border: 3px solid #ff5a58;
-    border-radius: 20px;
-    padding: 2.5rem;
+    max-width: 1200px;
+    /* Increased width for grid */
     animation: fadeInUp 0.6s ease-out;
 }
 
-.symptom-output h2 {
-    color: #9f2b2b;
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #ff5a58;
-    padding-bottom: 0.5rem;
+.symptom-output-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
 
-.symptom-output-section {
-    margin-bottom: 1.5rem;
+.symptom-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid;
+    /* Dynamic border color */
+    transition: transform 0.3s ease;
 }
 
-.symptom-output-section h3 {
-    color: #125774;
+.symptom-card:hover {
+    transform: translateY(-5px);
+}
+
+.symptom-card h3 {
     font-size: 1.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
 }
 
-.symptom-output-section ul {
+/* Specific Card Colors */
+.card-disease {
+    border-color: #9f2b2b;
+    grid-column: span 2;
+    /* Make disease prominent at the top */
+}
+
+.card-disease h3 {
+    color: #9f2b2b;
+}
+
+.card-desc {
+    border-color: #125774;
+}
+
+.card-desc h3 {
+    color: #125774;
+}
+
+.card-diet {
+    border-color: #00d492;
+}
+
+.card-diet h3 {
+    color: #00d492;
+}
+
+.card-prec {
+    border-color: #ff5a58;
+}
+
+.card-prec h3 {
+    color: #ff5a58;
+}
+
+.card-med {
+    border-color: #20ddce;
+}
+
+.card-med h3 {
+    color: #20ddce;
+}
+
+.card-workout {
+    border-color: #667eea;
+}
+
+.card-workout h3 {
+    color: #667eea;
+}
+
+.symptom-card ul {
     list-style: none;
     padding: 0;
 }
 
-.symptom-output-section li {
+.symptom-card li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid #eeffff;
+    border-bottom: 1px solid #f0f4f8;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    font-size: 0.95rem;
 }
 
-.symptom-output-section li::before {
+.symptom-card li::before {
     content: "•";
-    color: #20ddce;
-    font-weight: bold;
     margin-right: 0.75rem;
+    font-weight: bold;
+}
+
+.med-disclaimer {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #9f2b2b;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 @keyframes fadeInUp {
@@ -131,14 +195,29 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
+@media (max-width: 992px) {
+    .symptom-output-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-disease {
+        grid-column: span 1;
+    }
+}
+
 @media (max-width: 768px) {
-    .symptom-form-section, .symptom-output {
+    .symptom-form-section {
+        padding: 1.5rem;
+    }
+
+    .symptom-card {
         padding: 1.5rem;
     }
 }

@@ -96,27 +96,59 @@
 .drug-output {
     margin-top: 3rem;
     width: 100%;
-    max-width: 800px;
-    background: white;
-    border: 3px solid #ff5a58;
-    border-radius: 20px;
-    padding: 2.5rem;
+    max-width: 1000px;
     animation: fadeInUp 0.6s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.drug-output h2 {
-    color: #9f2b2b;
+.drug-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-top: 5px solid;
+    transition: transform 0.3s ease;
+}
+
+.drug-card:hover {
+    transform: translateY(-5px);
+}
+
+.drug-card h2 {
     font-size: 1.75rem;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #ff5a58;
-    padding-bottom: 0.5rem;
+    font-weight: 800;
 }
 
-.drug-output h3 {
-    color: #125774;
+.drug-card h3 {
     font-size: 1.25rem;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+/* Specific Card Styles */
+.card-details {
+    border-color: #9f2b2b;
+}
+
+.card-details h2 {
+    color: #9f2b2b;
+    border: none;
+    padding: 0;
+}
+
+.card-details h3 {
+    color: #125774;
+}
+
+.card-alternatives {
+    border-color: #20ddce;
+}
+
+.card-alternatives h3 {
+    color: #125774;
 }
 
 .drug-desc {
@@ -129,29 +161,40 @@
     list-style: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
 }
 
 .similar-drug-item {
     background-color: #edfffe;
-    padding: 1rem;
-    border-radius: 10px;
+    padding: 1.25rem;
+    border-radius: 12px;
     border: 1px solid #20ddce;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.2s ease;
+}
+
+.similar-drug-item:hover {
+    box-shadow: 0 4px 12px rgba(32, 221, 206, 0.2);
+    border-color: #125774;
+}
+
+.similar-drug-item span {
+    font-weight: 600;
+    color: #125774;
 }
 
 .buy-link {
     background-color: #125774;
     color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 5px;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
     text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    transition: background-color 0.2s;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
 }
 
 .buy-link:hover {
@@ -168,5 +211,19 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .drug-search-section {
+        padding: 1.5rem;
+    }
+
+    .drug-card {
+        padding: 1.5rem;
+    }
+
+    .similar-drugs-list {
+        grid-template-columns: 1fr;
     }
 }

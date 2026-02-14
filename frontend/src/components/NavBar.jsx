@@ -1,8 +1,42 @@
 import "./component_styling/navbar.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 function NavBar() {
+  let path = window.location.pathname;
+  console.log(path);
+  useEffect(() => {
+    let curr = 0;
+    switch (path) {
+      case '/':
+        curr = 0;
+        break;
+      case '/symptom-check':
+        curr = 1;
+        break;
+      case '/drug-finder':
+        curr = 2;
+        break;
+      case '/health-insights':
+        curr = 3;
+        break;
+      case '/skin-scan':
+        curr = 4;
+        break;
+      case '/medibot':
+        curr = 5;
+        break;
+      default:
+        break;
+    }
+
+    let arr = []
+    for (let i=0; i<6; i++) {
+        arr.push(i === curr);
+    }
+    setActiveArray(arr);
+  }, [path]);
+
   let navigate = useNavigate();
   let [activeArray, setActiveArray] = useState([
     true,
@@ -10,10 +44,11 @@ function NavBar() {
     false,
     false,
     false,
+    false,
   ]);
   const activeStyle = {
     backgroundColor: "#9F2B2B",
-    width: "20%",
+    width: "16%",
     height: "80%",
     display: "flex",
     alignItems: "center",
@@ -30,7 +65,15 @@ function NavBar() {
           className="tab"
           style={activeArray[0] ? activeStyle : {}}
           onClick={() => {
-            setActiveArray([true, false, false, false, false]);
+            navigate("/");
+          }}
+        >
+          Home
+        </div>
+        <div
+          className="tab"
+          style={activeArray[1] ? activeStyle : {}}
+          onClick={() => {
             navigate("/symptom-check");
           }}
         >
@@ -38,8 +81,8 @@ function NavBar() {
         </div>
         <div
           className="tab"
-          style={activeArray[1] ? activeStyle : {}}
-          onClick={() => {setActiveArray([false, true, false, false, false])
+          style={activeArray[2] ? activeStyle : {}}
+          onClick={() => {
             navigate("/drug-finder");
           }}
         >
@@ -47,9 +90,8 @@ function NavBar() {
         </div>
         <div
           className="tab"
-          style={activeArray[2] ? activeStyle : {}}
+          style={activeArray[3] ? activeStyle : {}}
           onClick={() => {
-            setActiveArray([false, false, true, false, false]);
             navigate("/health-insights");
           }}
         >
@@ -57,9 +99,8 @@ function NavBar() {
         </div>
         <div
           className="tab"
-          style={activeArray[3] ? activeStyle : {}}
+          style={activeArray[4] ? activeStyle : {}}
           onClick={() => {
-            setActiveArray([false, false, false, true, false]);
             navigate("/skin-scan");
           }}
         >
@@ -67,9 +108,8 @@ function NavBar() {
         </div>
         <div
           className="tab"
-          style={activeArray[4] ? activeStyle : {}}
+          style={activeArray[5] ? activeStyle : {}}
           onClick={() => {
-            setActiveArray([false, false, false, false, true])
             navigate("/medibot");
           }}
         >

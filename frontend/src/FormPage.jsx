@@ -80,7 +80,7 @@ function FormPage() {
   let [metaDesc, setMetaDesc] = useState("");
 
   return (
-    <>
+    <div className="animate-in">
     <div style={{
       height: "60px",
       backgroundColor: "#edfffe"
@@ -139,7 +139,7 @@ function FormPage() {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
-    </>
+    </div>
   )
 }
 

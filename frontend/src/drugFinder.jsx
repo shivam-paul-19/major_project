@@ -22,6 +22,10 @@ function DrugFinder() {
     
     const handleSubmission = async (e) => {
         e.preventDefault();
+        if (!selectedPerson) {
+            alert("Please select a drug first");
+            return;
+        }
         console.log(selectedPerson);
         let response = await axios.post("http://localhost:5000/recommend", {
             drug: selectedPerson.name
@@ -32,7 +36,11 @@ function DrugFinder() {
 
 
   return (
-    <div className="drug-container">
+    <div className="drug-container animate-in">
+      <div style={{
+        height: "60px",
+        backgroundColor: "#edfffe"
+      }}></div>
       <div className="drug-header">
         <h1>Drug Recommender</h1>
         <p>Find information and alternatives for medications</p>
@@ -45,7 +53,7 @@ function DrugFinder() {
             <ComboboxInput
               className="drug-combobox-input"
               aria-label="Drug name"
-              displayValue={(person) => person?.name}
+              displayValue={(person) => person?.name || ""}
               onChange={(event) => setQuery(event.target.value)}
               placeholder="Start typing drug name..."
             />
@@ -63,16 +71,15 @@ function DrugFinder() {
         </form>
       </div>
 
-      {output && (
+      {output != '' && selectedPerson && (
         <div className="drug-output">
-          <h2>Drug Details: {selectedPerson.name}</h2>
-          
-          <div className="drug-output-section">
+          <div className="drug-card card-details">
+            <h2>Drug Details: {selectedPerson.name}</h2>
             <h3>Description</h3>
             <p className="drug-desc">{output.desc}</p>
           </div>
 
-          <div className="drug-output-section">
+          <div className="drug-card card-alternatives">
             <h3>Similar Drugs & Alternatives</h3>
             <ul className="similar-drugs-list">
               {output.similar.map((s_drug, idx) => (
