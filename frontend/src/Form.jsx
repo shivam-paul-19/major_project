@@ -266,10 +266,6 @@ const Form = ({getOutput, open, load}) => {
 
   return (
     <div className="form-container">
-      <div className="form-header">
-        <p>Please fill out all required fields to complete your health profile</p>
-      </div>
-
       <form onSubmit={handleSubmit} className="medical-form">
         
         {/* Personal Details Section */}

@@ -4,8 +4,10 @@ import "./imageform.css";
 
 function ImageForm() {
     let [selectedFile, setSelectedFile] = useState(null);
+    let [imagePreview, setImagePreview] = useState(null);
     let [output, setOutput] = useState("");
-    let [error, setError] = useState("");
+    let [confidence, setConfidence] = useState("");
+    let [error, setError] = useState(null);
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
@@ -16,12 +18,24 @@ function ImageForm() {
             if (!allowedExtensions.includes(fileExtension)) {
                 setError("Only PNG, JPG, and JPEG files are acceptable.");
                 setSelectedFile(null);
+                setImagePreview(null);
                 e.target.value = ""; // Clear the input
                 return;
             }
             
             setError("");
             setSelectedFile(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
+    };
+
+    const removeImage = () => {
+        setSelectedFile(null);
+        setImagePreview(null);
+        setError("");
+        const input = document.getElementById("image");
+        if (input) {
+            input.value = ""; // Clear the input field
         }
     };
 
@@ -41,6 +55,7 @@ function ImageForm() {
         try {
             const response = await axios.post("http://localhost:5000/skin", formData);
             setOutput(response.data.output.result);
+            setConfidence(response.data.output.confidence);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -57,33 +72,66 @@ function ImageForm() {
         <p>Upload a clear image of the affected area for AI analysis</p>
       </div>
 
-      <div className="image-upload-section">
-        <form className="image-upload-form" onSubmit={sendImage}>
-          <label className="image-label" htmlFor="image">Upload your image here (only .png, .jpg or .jpeg)</label>
-          <input 
-            className="image-input"
-            type="file" 
-            name="image" 
-            id="image" 
-            accept=".png,.jpg,.jpeg"
-            onChange={handleFileChange}
-          />
-          {error && <p className="validation-error">{error}</p>}
-          <button className="image-submit-btn" type="submit">Scan Image</button>
-        </form>
-      </div>
+      <div className="image-content-wrapper">
+        <div className="image-upload-section">
+          <form className="image-upload-form" onSubmit={sendImage}>
+            <label className="image-label" htmlFor="image">Upload your image here (only .png, .jpg or .jpeg)</label>
+            
+            <div className="image-input-wrapper">
+              <input 
+                className="image-input"
+                type="file" 
+                name="image" 
+                id="image" 
+                accept=".png,.jpg,.jpeg"
+                onChange={handleFileChange}
+              />
+              
+              {imagePreview && (
+                <div className="image-preview-container">
+                  <img src={imagePreview} alt="Selected Preview" className="preview-img" />
+                  <button 
+                    type="button" 
+                    className="remove-image-btn" 
+                    onClick={removeImage}
+                    title="Remove image"
+                  >
+                    &times;
+                  </button>
+                </div>
+              )}
+            </div>
 
-      {output && (
-        <div className="image-output">
-          <h2>Analysis Result</h2>
-          <div className="image-result">
-            {output}
-          </div>
-          <p style={{marginTop: "1rem", fontSize: "0.85rem", color: "#666"}}>
-            *This is an AI-generated assessment. Please consult a dermatologist for a professional clinical diagnosis.
-          </p>
+            {error && <p className="validation-error">{error}</p>}
+            <button className="image-submit-btn" type="submit">Scan Image</button>
+          </form>
         </div>
-      )}
+
+        {output && (
+          <div className="image-output">
+            <h2>Analysis Result</h2>
+            <div className="image-result">
+              {output}
+            </div>
+            
+            {confidence && (
+              <div className="confidence-section">
+                <div className="confidence-score">
+                  <span className="confidence-label">Match Probability:</span>
+                  <span className="confidence-value">{(parseFloat(confidence) * 100).toFixed(1)}%</span>
+                </div>
+                <p className="confidence-desc">
+                  This score shows how closely the uploaded image matches our patterns for this condition.
+                </p>
+              </div>
+            )}
+
+            <p className="ai-disclaimer">
+              *This is an AI-generated assessment. Please consult a dermatologist for a professional clinical diagnosis.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

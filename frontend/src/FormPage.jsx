@@ -86,6 +86,10 @@ function FormPage() {
       backgroundColor: "#edfffe"
     }}>
     </div>
+    <div className="health-report-header">
+      <h1>Health Report</h1>
+      <p>Please fill out all required fields to complete your health profile.</p>
+    </div>
     <Form getOutput={getOutput} open={setOpen} load={setLoading}/>
       <Drawer open={open} onOpenChange={setOpen} className="dr">
           <DrawerContent>

@@ -1,5 +1,5 @@
 import "./Home.css";
-import { AuroraText } from "@/components/ui/aurora-text"
+import { AuroraText } from "@/components/ui/aurora-text";
 
 function Home() {
   return (
@@ -62,7 +62,7 @@ function Home() {
       </div>
 
       <footer className="home-footer">
-        <p>Made by <strong>Shivam, Abhay</strong> and <strong>Yogesh</strong></p>
+        <p>Made by <strong><a href="https://www.linkedin.com/in/shivam-paul-545790281/" target="_blank">Shivam</a>, <a href="https://www.linkedin.com/in/abhay-singh-050a5b293/" target="_blank">Abhay</a></strong> and <strong><a href="https://www.linkedin.com/in/yogeshkumar05/" target="_blank">Yogesh</a></strong></p>
       </footer>
     </div>
   );
