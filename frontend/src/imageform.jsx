@@ -59,7 +59,7 @@ function ImageForm() {
 
       <div className="image-upload-section">
         <form className="image-upload-form" onSubmit={sendImage}>
-          <label className="image-label" htmlFor="image">Upload your image here</label>
+          <label className="image-label" htmlFor="image">Upload your image here (only .png, .jpg or .jpeg)</label>
           <input 
             className="image-input"
             type="file" 
